@@ -110,7 +110,7 @@ def dispClicker(pos: vect.Vector) -> None:
 		cv2.ellipse(img, (pos.x, pos.y), (17, 17), 0, -90, -90 + 360 * click_val, (0, 100, 0), 2)
 
 def doGameOverStuff() -> None:
-	global click_val, enemies, game_over_time, game_status, img, n_enemies, nuke_val
+	global click_val, enemies, game_over_time, game_status, img, mode, n_enemies, nuke_val, spawn_rate
 
 	img = np.zeros_like(img)
 
@@ -130,8 +130,10 @@ def doGameOverStuff() -> None:
 		nuke_val = 1
 		click_val = 0
 		game_over_time = 0
+		spawn_rate = 0.5
+		mode = "base"
 
-		if len(leaderboard) < 3:
+		if len(leaderboard) < 5:
 			game_status = "save_score"
 			return
 
@@ -170,7 +172,9 @@ def doLeaderboardStuff() -> None:
 		dispClicker(finger_vect)
 
 def doMenuStuff() -> None:
-	global click_val, curr_selection, game_status, img, prev_selection
+	global click_val, curr_selection, game_status, img, prev_selection, score
+
+	score = 0
 
 	finger_pos = detector.getPosition(img, [8], draw=False)
 	if finger_pos:
@@ -414,4 +418,5 @@ bugs:
 v other enemies may flicker when an enemy dies
 v beam backshots
 v long beam division by zero
+v score is not being reset to zero if the leaderboard is not updated
 '''
