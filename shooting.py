@@ -177,7 +177,7 @@ def doMenuStuff() -> None:
 		finger_vect = vect.Vector(*finger_pos[0])
 	img = np.zeros_like(img)
 
-	cv2.putText(img, "[Insert title]", (base_width, base_height), cv2.FONT_HERSHEY_COMPLEX, 1.5, (0, 255, 255))
+	cv2.putText(img, "Space Shooter", (base_width, base_height), cv2.FONT_HERSHEY_COMPLEX, 1.5, (0, 255, 255))
 
 	curr_selection = None
 	for i in range(1, 5):
