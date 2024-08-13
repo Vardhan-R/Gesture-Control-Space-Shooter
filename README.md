@@ -1,2 +1,2 @@
-# Gesture-Control-Space-Shooter
+# Gesture Control Space Shooter
 Gesture control space shooter
